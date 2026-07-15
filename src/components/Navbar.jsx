@@ -50,8 +50,8 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#112240] bg-[#020c1b]/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#112240] bg-[#020c1b]/95 backdrop-blur-xl shadow-sm">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="text-base font-semibold text-white sm:text-lg">Ruchika Bhoite</div>
           <p className="hidden text-xs text-[#8892b0] md:block">Data Engineer • LinkedIn portfolio</p>

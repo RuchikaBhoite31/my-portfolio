@@ -6,26 +6,26 @@ import Work from "./components/Work";
 
 function App() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#020c1b" }}>
+    <div className="min-h-screen bg-[#020c1b] text-[#a8b2d1]">
       <Navbar />
 
-      <section id="home">
+      <section id="home" className="scroll-mt-28">
         <Hero />
       </section>
 
-      <section id="work" className="scroll-mt-20">
+      <section id="work" className="scroll-mt-28">
         <Work />
       </section>
 
-      <section id="projects" className="scroll-mt-20">
+      <section id="projects" className="scroll-mt-28">
         <Projects />
       </section>
 
-      <section id="education" className="scroll-mt-20">
+      <section id="education" className="scroll-mt-28">
         <Education />
       </section>
 
-      <footer className="py-12 border-t mt-16" style={{ borderColor: "#233554" }}>
+      <footer className="py-12 border-t border-[#233554]">
         <div className="mx-auto w-full max-w-7xl px-4 text-center space-y-3 sm:px-6">
           <p className="text-sm text-[#a8b2d1]">
             Built and designed by <strong className="text-[#64ffda]">Ruchika Bhoite</strong>

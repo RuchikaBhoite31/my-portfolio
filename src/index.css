@@ -21,9 +21,11 @@
     background-color: var(--dark-navy);
     text-rendering: optimizeLegibility;
     font-variant-ligatures: contextual;
+    scroll-behavior: smooth;
   }
 
   body {
+    margin: 0;
     min-height: 100vh;
     background-color: var(--dark-navy);
     color: var(--slate);
@@ -39,11 +41,14 @@
   h5,
   h6 {
     color: var(--white);
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
   }
 
-  p {
+  p,
+  li,
+  span,
+  a {
     color: var(--slate);
   }
 
@@ -78,12 +83,6 @@
   background: var(--slate);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection styling */
 ::selection {
   background-color: var(--green-tint);
   color: var(--green-bright);
@@ -101,7 +100,6 @@ html {
   }
 }
 
-/* Glow effect utilities */
 .glow-cyan {
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
 }
@@ -114,13 +112,11 @@ html {
   box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
 }
 
-/* Text shadow effects */
 .text-glow {
   text-shadow: 0 0 20px rgba(168, 85, 247, 0.8),
                0 0 40px rgba(168, 85, 247, 0.4);
 }
 
-/* Thin scrollbar for project overlays */
 .project-overlay::-webkit-scrollbar {
   width: 4px;
 }

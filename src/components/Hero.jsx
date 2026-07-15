@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import CloudQueueRoundedIcon from "@mui/icons-material/CloudQueueRounded";
 import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
@@ -6,6 +7,8 @@ import DataObjectRoundedIcon from "@mui/icons-material/DataObjectRounded";
 import AutoFixHighRoundedIcon from "@mui/icons-material/AutoFixHighRounded";
 
 function Hero() {
+  const [hasProfileImage, setHasProfileImage] = useState(true);
+
   const downloadCV = () => {
     const link = document.createElement("a");
     link.href = "/Ruchika_Bhoite_Resume.pdf";
@@ -40,22 +43,22 @@ function Hero() {
   return (
     <section className="min-h-[calc(100vh-72px)] flex items-center justify-center px-4 pt-24 pb-12 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 xl:grid-cols-[1.4fr_0.85fr] items-start">
+        <div className="grid gap-10 xl:grid-cols-[1.42fr_0.95fr] items-start">
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
               <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">hi, I’m Ruchika.</h1>
               <p className="max-w-3xl text-xl font-semibold text-[#64ffda] sm:text-2xl">
-                Data Engineer & DevOps practitioner building trusted cloud data systems.
+                Data Engineer & DevOps practitioner building reliable cloud data systems.
               </p>
             </div>
 
             <div className="space-y-5 text-base leading-relaxed text-[#a8b2d1] sm:text-lg">
               <p>
-                I build scalable ETL pipelines, cloud data platforms, and automation workflows for analytics-driven organizations. My work combines AWS, Spark, Python, and DevOps practices so data stays reliable from ingestion through reporting.
+                I build scalable ETL pipelines, cloud data platforms, and automation workflows that keep data clean, trusted, and ready for analytics.
               </p>
               <p>
-                I’ve supported Trane Technologies and Mastercard through TCS, delivering pipeline automation, infrastructure as code, monitoring, and reporting solutions. I also have experience in backend development, web design, and AI-powered applications.
+                I have delivered solutions for Trane Technologies and Mastercard using AWS, Spark, Python, and infrastructure-as-code.
               </p>
             </div>
 
@@ -142,7 +145,23 @@ function Hero() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-8 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-10">
+          <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8">
+            <div className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f]">
+              {hasProfileImage ? (
+                <img
+                  src="/profile.jpg"
+                  alt="Ruchika Bhoite"
+                  onError={() => setHasProfileImage(false)}
+                  className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
+                />
+              ) : (
+                <div className="flex h-72 items-center justify-center bg-[#0a192f]">
+                  <div className="flex h-44 w-44 items-center justify-center rounded-[2rem] bg-[#112240] text-5xl font-bold text-[#64ffda]">
+                    RB
+                  </div>
+                </div>
+              )}
+            </div>
             <p className="text-xs uppercase tracking-[0.4em] text-[#64ffda] mb-4">Profile overview</p>
             <h2 className="text-2xl font-semibold text-white sm:text-3xl mb-6">
               Build cloud-ready data systems with strong automation and observability.
