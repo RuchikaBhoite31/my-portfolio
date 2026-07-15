@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --dark-navy: #020c1b;
+  --navy: #0a192f;
+  --light-navy: #112240;
+  --lightest-navy: #233554;
+  --navy-shadow: #020c1bb3;
+  --slate: #8892b0;
+  --light-slate: #a8b2d1;
+  --lightest-slate: #ccd6f6;
+  --white: #e6f1ff;
+  --green-bright: #64ffda;
+  --green-tint: #64ffda1a;
+}
+
+@layer base {
+  html {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--slate);
+    background-color: var(--dark-navy);
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: contextual;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--dark-navy);
+    color: var(--slate);
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    color: var(--slate);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lightest-navy);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--green-tint);
+  color: var(--green-bright);
+}
+
+.progress-fill {
+  width: 0;
+  transform-origin: left;
+  animation: fill-bar 1.1s ease forwards;
+}
+
+@keyframes fill-bar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Glow effect utilities */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+}
+
+/* Text shadow effects */
+.text-glow {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.8),
+               0 0 40px rgba(168, 85, 247, 0.4);
+}
+
+/* Thin scrollbar for project overlays */
+.project-overlay::-webkit-scrollbar {
+  width: 4px;
+}
+
+.project-overlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-overlay::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 2px;
+}
+
+.project-overlay::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
