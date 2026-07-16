@@ -37,7 +37,7 @@ function Hero() {
     { name: "Terraform", Icon: StorageRoundedIcon },
     { name: "Docker", Icon: CodeRoundedIcon },
     { name: "Python", Icon: BuildRoundedIcon },
-    { name: "CI/CD", Icon: AutoFixHighRoundedIcon },
+    { name: "CI/CD", Icon: AutoFixHighRoundedIcon },Data engineering, DevOps, and internship-based product development.
   ];
 
   // Prefer images placed in `src/assets` (e.g. `src/assets/profile.jpg` or
@@ -63,7 +63,7 @@ function Hero() {
           <div className="space-y-8 max-w-3xl">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
-              <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">hi, I’m Ruchika.</h1>
+              <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">Hi, I’m Ruchika.</h1>
               <p className="max-w-3xl text-xl font-semibold text-[#64ffda] sm:text-2xl">
                 Data Engineer & DevOps practitioner building reliable cloud data systems.
               </p>
@@ -103,7 +103,7 @@ function Hero() {
               </div>
               <div className="rounded-3xl border border-[#233554] bg-[#0b1627] p-5">
                 <p className="text-[10px] uppercase tracking-[0.35em] text-[#64ffda] mb-2">Phone</p>
-                +353089
+                +353 089 450 1957
               </div>
               <div className="rounded-3xl border border-[#233554] bg-[#0b1627] p-5">
                 <p className="text-[10px] uppercase tracking-[0.35em] text-[#64ffda] mb-2">Degree</p>
