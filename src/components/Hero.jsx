@@ -84,8 +84,14 @@ function Hero() {
         <div className="grid gap-12 lg:grid-cols-[1.45fr_0.95fr] items-start">
           <motion.div className="space-y-10" variants={heroVariants}>
             <motion.div className="space-y-4" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-              <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
-              <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">Hi, I’m Ruchika.</h1>
+              <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.45em] text-[#64ffda]">
+                <span>Developer</span>
+                <span className="inline-block h-px w-10 bg-[#233554]" />
+                <span>Data Engineer</span>
+              </div>
+              <h1 className="text-5xl font-bold text-white leading-tight tracking-tight sm:text-6xl md:text-7xl">
+                Hi, I’m Ruchika.
+              </h1>
               <p className="max-w-3xl text-xl font-semibold text-[#64ffda] sm:text-2xl">
                 Data Engineer & DevOps practitioner building reliable cloud data systems.
               </p>
@@ -263,7 +269,7 @@ function Hero() {
               </div>
               <div className="rounded-3xl border border-[#233554] bg-[#0a192f] p-4">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-[#64ffda] mb-2">Experience</p>
-                TCS data engineering, DevOps, and internship-based product development.
+                Data Engineer, DevOps Engineer, and internship-based product development.
               </div>
               <div className="rounded-3xl border border-[#233554] bg-[#0a192f] p-4">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-[#64ffda] mb-2">Tech stack</p>
