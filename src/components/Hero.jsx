@@ -40,10 +40,26 @@ function Hero() {
     { name: "CI/CD", Icon: AutoFixHighRoundedIcon },
   ];
 
+  // Prefer images placed in `src/assets` (e.g. `src/assets/profile.jpg` or
+  // generated variants like `profile-320.webp`). Falls back to `/profile.jpg` in `public`.
+  const assetImages = import.meta.glob('../assets/*.{jpg,png,webp}', { eager: true, as: 'url' });
+
+  // Collect discovered asset URLs and categorize by extension/size pattern
+  const assets = Object.entries(assetImages).map(([path, url]) => ({ path, url }));
+  // webp variants expected: profile-320.webp, profile-480.webp, profile-800.webp
+  const webpVariants = assets
+    .filter(a => /profile-?\d*\.webp$/.test(a.path))
+    .map(a => ({ url: a.url, w: Number((a.path.match(/profile-(\d+)\.webp$/) || [])[1]) || 0 }))
+    .sort((x, y) => x.w - y.w);
+  const jpegFallback = assets.find(a => /profile\.(jpg|png)$/.test(a.path))?.url;
+
+  const webpSrcSet = webpVariants.map(v => `${v.url} ${v.w}w`).join(', ');
+  const fallbackSrc = jpegFallback ?? assets[0]?.url ?? '/profile.jpg';
+
   return (
     <section className="min-h-[calc(100vh-72px)] flex items-center justify-center px-4 pt-24 pb-12 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 xl:grid-cols-[1.42fr_0.95fr] items-start">
+        <div className="grid gap-10 xl:grid-cols-[1.42fr_0.95fr] items-center">
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
@@ -145,15 +161,21 @@ function Hero() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8">
-            <div className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f]">
+          <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8 flex flex-col justify-center">
+            <div className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f] aspect-square">
               {hasProfileImage ? (
-                <img
-                  src="/profile.jpg"
-                  alt="Ruchika Bhoite"
-                  onError={() => setHasProfileImage(false)}
-                  className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
-                />
+                <picture>
+                  {webpVariants.length > 0 && (
+                    <source type="image/webp" srcSet={webpSrcSet} sizes="(max-width: 768px) 320px, 480px" />
+                  )}
+                  <img
+                    src={fallbackSrc}
+                    alt="Ruchika Bhoite"
+                    onError={() => setHasProfileImage(false)}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
+                    style={{ display: 'block' }}
+                  />
+                </picture>
               ) : (
                 <div className="flex h-72 items-center justify-center bg-[#0a192f]">
                   <div className="flex h-44 w-44 items-center justify-center rounded-[2rem] bg-[#112240] text-5xl font-bold text-[#64ffda]">
