@@ -59,8 +59,8 @@ function Hero() {
   return (
     <section className="min-h-[calc(100vh-72px)] flex items-center justify-center px-4 pt-24 pb-12 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 xl:grid-cols-[1.42fr_0.95fr] items-center">
-          <div className="space-y-8">
+        <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-[1.42fr_0.95fr] items-center">
+          <div className="space-y-8 max-w-3xl">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
               <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">hi, I’m Ruchika.</h1>
@@ -164,13 +164,14 @@ function Hero() {
           <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8 flex flex-col justify-center">
             <div className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f] aspect-square">
               {hasProfileImage ? (
-                <picture>
+                <picture aria-label="Profile picture">
                   {webpVariants.length > 0 && (
                     <source type="image/webp" srcSet={webpSrcSet} sizes="(max-width: 768px) 320px, 480px" />
                   )}
                   <img
                     src={fallbackSrc}
                     alt="Ruchika Bhoite"
+                    loading="lazy"
                     onError={() => setHasProfileImage(false)}
                     className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
                     style={{ display: 'block' }}
