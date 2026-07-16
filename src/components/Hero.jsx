@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import CloudQueueRoundedIcon from "@mui/icons-material/CloudQueueRounded";
 import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
@@ -37,8 +39,23 @@ function Hero() {
     { name: "Terraform", Icon: StorageRoundedIcon },
     { name: "Docker", Icon: CodeRoundedIcon },
     { name: "Python", Icon: BuildRoundedIcon },
-    { name: "CI/CD", Icon: AutoFixHighRoundedIcon },Data engineering, DevOps, and internship-based product development.
+    { name: "CI/CD", Icon: AutoFixHighRoundedIcon },
   ];
+
+  const heroVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
 
   // Prefer images placed in `src/assets` (e.g. `src/assets/profile.jpg` or
   // generated variants like `profile-320.webp`). Falls back to `/profile.jpg` in `public`.
@@ -57,26 +74,30 @@ function Hero() {
   const fallbackSrc = jpegFallback ?? assets[0]?.url ?? '/profile.jpg';
 
   return (
-    <section className="min-h-[calc(100vh-72px)] flex items-center justify-center px-4 pt-24 pb-12 sm:px-6 lg:px-8">
+    <motion.section
+      className="min-h-[calc(100vh-72px)] flex items-center justify-center px-4 pt-24 pb-12 sm:px-6 lg:px-8"
+      initial="hidden"
+      animate="visible"
+      variants={heroVariants}
+    >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-[1.42fr_0.95fr] items-center">
-          <div className="space-y-8 max-w-3xl">
-            <div className="space-y-4">
+        <div className="grid gap-12 lg:grid-cols-[1.45fr_0.95fr] items-start">
+          <motion.div className="space-y-10" variants={heroVariants}>
+            <motion.div className="space-y-4" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
               <p className="text-xs uppercase tracking-[0.45em] text-[#64ffda]">LinkedIn portfolio profile</p>
               <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">Hi, I’m Ruchika.</h1>
               <p className="max-w-3xl text-xl font-semibold text-[#64ffda] sm:text-2xl">
                 Data Engineer & DevOps practitioner building reliable cloud data systems.
               </p>
-            </div>
-
-            <div className="space-y-5 text-base leading-relaxed text-[#a8b2d1] sm:text-lg">
+            </motion.div>
+            <motion.div className="space-y-5 text-base leading-relaxed text-[#a8b2d1] sm:text-lg" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
               <p>
                 I build scalable ETL pipelines, cloud data platforms, and automation workflows that keep data clean, trusted, and ready for analytics.
               </p>
               <p>
                 I have delivered solutions for Trane Technologies and Mastercard using AWS, Spark, Python, and infrastructure-as-code.
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm text-[#ccd6f6]">
               <div className="rounded-3xl border border-[#233554] bg-[#0b1627] p-5">
@@ -111,38 +132,48 @@ function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <button
+            <motion.div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap" variants={fadeUp}>
+              <motion.button
                 onClick={downloadCV}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 className="rounded-full border border-[#64ffda] px-6 py-3 text-sm font-medium text-[#64ffda] transition hover:bg-[#64ffda1a]"
               >
                 Download CV
-              </button>
-              <a
+              </motion.button>
+              <motion.a
                 href="https://www.linkedin.com/in/ruchika-bhoite-761900213/"
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 className="rounded-full border border-[#64ffda] bg-[#0a192f] px-6 py-3 text-sm font-medium text-white transition hover:border-[#91ffe0]"
               >
                 View LinkedIn
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
-            <div className="rounded-[2rem] border border-[#233554] bg-[#0b1627] p-5">
+            <motion.div className="rounded-[2rem] border border-[#233554] bg-[#0b1627] p-5" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
               <p className="text-[10px] uppercase tracking-[0.35em] text-[#64ffda] mb-4">Skills & tools</p>
               <div className="grid gap-3 sm:grid-cols-3">
                 {tools.map(({ name, Icon }) => (
-                  <div key={name} className="flex items-center gap-3 rounded-3xl border border-[#233554] bg-[#112240] px-4 py-3">
+                  <motion.div key={name} className="flex items-center gap-3 rounded-3xl border border-[#233554] bg-[#112240] px-4 py-3" whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                     <Icon className="text-[#64ffda]" fontSize="small" />
                     <span className="text-sm font-medium text-[#a8b2d1]">{name}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {skills.map((skill, index) => (
-                <div key={skill.name} className="rounded-3xl border border-[#233554] bg-[#0a192f] p-4">
+                <motion.div
+                  key={skill.name}
+                  className="rounded-3xl border border-[#233554] bg-[#0a192f] p-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 + index * 0.05, duration: 0.4 }}
+                >
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-sm font-semibold uppercase tracking-[0.12em] text-[#a8b2d1]">{skill.name}</span>
                     <span className="text-[10px] uppercase tracking-[0.3em] text-[#64ffda]">{skill.level}</span>
@@ -151,52 +182,79 @@ function Hero() {
                     {skill.percent}%
                   </div>
                   <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#112240]">
-                    <div
-                      className="h-full rounded-full bg-[#64ffda] progress-fill"
-                      style={{ width: `${skill.percent}%`, animationDelay: `${index * 100}ms` }}
+                    <motion.div
+                      className="h-full rounded-full bg-[#64ffda]"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.percent}%` }}
+                      transition={{ delay: 0.35 + index * 0.05, duration: 0.8, ease: "easeOut" }}
                     />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8 flex flex-col justify-center">
-            <div className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f] aspect-square">
-              {hasProfileImage ? (
-                <picture aria-label="Profile picture">
-                  {webpVariants.length > 0 && (
-                    <source type="image/webp" srcSet={webpSrcSet} sizes="(max-width: 768px) 320px, 480px" />
-                  )}
-                  <img
-                    src={fallbackSrc}
-                    alt="Ruchika Bhoite"
-                    loading="lazy"
-                    onError={() => setHasProfileImage(false)}
-                    className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
-                    style={{ display: 'block' }}
-                  />
-                </picture>
-              ) : (
-                <div className="flex h-72 items-center justify-center bg-[#0a192f]">
-                  <div className="flex h-44 w-44 items-center justify-center rounded-[2rem] bg-[#112240] text-5xl font-bold text-[#64ffda]">
-                    RB
+          <motion.div
+            className="relative mx-auto w-full max-w-md rounded-[2rem] border border-[#233554] bg-gradient-to-br from-[#0e1b34] via-[#112240] to-[#0a1831] p-6 shadow-[0_25px_80px_rgba(100,255,218,0.16)] sm:p-8 flex flex-col justify-between min-h-[42rem] overflow-hidden"
+            variants={slideInRight}
+          >
+            <motion.div
+              className="pointer-events-none absolute -right-10 top-10 h-36 w-36 rounded-full bg-[#64ffda]/10 blur-3xl"
+              animate={{ x: [0, -12, 0], y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="pointer-events-none absolute -left-8 bottom-10 h-24 w-24 rounded-full border border-[#64ffda]/20"
+              animate={{ rotate: [0, 45, 0] }}
+              transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
+            />
+            <Tilt
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
+              perspective={900}
+              scale={1.02}
+              transitionSpeed={400}
+              glareEnable={false}
+              className="mb-6 overflow-hidden rounded-[2rem] border border-[#233554] bg-[#0a192f] aspect-square min-h-[24rem]"
+            >
+              <motion.div className="h-full w-full" whileHover={{ scale: 1.01 }} transition={{ duration: 0.35, ease: "easeOut" }}>
+                {hasProfileImage ? (
+                  <picture aria-label="Profile picture">
+                    {webpVariants.length > 0 && (
+                      <source type="image/webp" srcSet={webpSrcSet} sizes="(max-width: 768px) 320px, 480px" />
+                    )}
+                    <img
+                      src={fallbackSrc}
+                      alt="Ruchika Bhoite"
+                      loading="lazy"
+                      onError={() => setHasProfileImage(false)}
+                      className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
+                      style={{ display: 'block' }}
+                    />
+                  </picture>
+                ) : (
+                  <div className="flex h-72 items-center justify-center bg-[#0a192f]">
+                    <div className="flex h-44 w-44 items-center justify-center rounded-[2rem] bg-[#112240] text-5xl font-bold text-[#64ffda]">
+                      RB
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-            <p className="text-xs uppercase tracking-[0.4em] text-[#64ffda] mb-4">Profile overview</p>
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl mb-6">
+                )}
+              </motion.div>
+            </Tilt>
+            <motion.p className="text-xs uppercase tracking-[0.4em] text-[#64ffda] mb-4" variants={fadeUp}>
+              Profile overview
+            </motion.p>
+            <motion.h2 className="text-2xl font-semibold text-white sm:text-3xl mb-6" variants={fadeUp}>
               Build cloud-ready data systems with strong automation and observability.
-            </h2>
-            <div className="space-y-4 text-[#a8b2d1]">
+            </motion.h2>
+            <motion.div className="space-y-4 text-[#a8b2d1]" variants={fadeUp}>
               <p>
                 I deliver data engineering solutions that help teams trust their data, reduce manual effort, and accelerate actionable insights.
               </p>
               <p>
                 My work spans data pipelines, analytics-ready storage, CI/CD deployment, and monitoring for production systems.
               </p>
-            </div>
+            </motion.div>
 
             <div className="mt-8 grid gap-4">
               <div className="rounded-3xl border border-[#233554] bg-[#0a192f] p-4">
@@ -212,10 +270,10 @@ function Hero() {
                 Python, Spark, AWS, Terraform, Docker, Jenkins, SQL, Tableau.
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

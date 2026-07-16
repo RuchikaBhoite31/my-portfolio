@@ -1,18 +1,25 @@
-# React + Vite
+# Ruchika Bhoite Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live on GitHub Pages](https://github.com/RuchikaBhoite31/my-portfolio/actions/workflows/deploy.yml/badge.svg)](https://RuchikaBhoite31.github.io/my-portfolio)
 
-Currently, two official plugins are available:
+A polished, responsive portfolio built with React, Vite, Tailwind-style utility classes, and Framer Motion animations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Mobile-first responsive layout
+- ✅ Animated hero section with profile card tilt effect
+- ✅ Optimized profile image delivery using WebP variants
+- ✅ GitHub Pages deployment ready
 
-## React Compiler
+## Live Demo
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+https://RuchikaBhoite31.github.io/my-portfolio
 
-Note: This will impact Vite dev & build performances.
+## Scripts
 
-## Expanding the ESLint configuration
+- `npm run dev` — start local development server
+- `npm run build` — create production build
+- `npm run preview` — preview the production build locally
+- `npm run deploy` — deploy the built site to GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+
+The site uses `framer-motion` for advanced animations and `react-parallax-tilt` for a polished interactive profile card.
